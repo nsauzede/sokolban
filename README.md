@@ -5,7 +5,7 @@ Sokoban in V using Sokol, just 4fun
 
 # Try it
 ```
-$ v run sokolban
+$ v run sokolban.v
 ```
 
 [VWorkflowBadge]: https://github.com/nsauzede/sokolban/workflows/V/badge.svg
