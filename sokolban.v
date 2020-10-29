@@ -33,7 +33,6 @@ mut:
 	px     int
 	py     int
 	dirty  bool = true
-	cont   bool = true
 }
 
 fn (s State) can_move(x int, y int) bool {
