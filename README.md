@@ -1,7 +1,9 @@
 # sokolban
 [![Build Status][VWorkflowBadge]][WorkflowUrl]
 
-Sokoban in V using Sokol, just 4fun
+Sokoban in V using Sokol/TUI, just 4fun
+
+![Screenshot of sokolban](sokolban.png)
 
 # Try it
 ```
