@@ -1,0 +1,22 @@
+name: V
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt install --quiet -y libx11-dev libxi-dev libxcursor-dev libgl-dev
+        git clone https://github.com/vlang/v.git
+        (cd v ; make)
+    - name: build
+      run: v/v build sokolban.v
