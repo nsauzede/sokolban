@@ -19,4 +19,4 @@ jobs:
         git clone https://github.com/vlang/v.git
         (cd v ; make)
     - name: build
-      run: v/v build sokolban.v
+      run: v/v sokolban.v
