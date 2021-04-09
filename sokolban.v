@@ -98,6 +98,8 @@ fn main() {
 	s.h = s.map.len
 	s.w = s.map[0].len
 	desc := C.sapp_desc{
+		window_title: 'Sokolban'.str
+		html5_canvas_name: 'Sokolban'.str
 		width: 320
 		height: 200
 		frame_userdata_cb: frame
@@ -158,7 +160,7 @@ fn frame(user_data voidptr) {
 //	C.ImGui_ImplOpenGL3_RenderDrawData(C.igGetDrawData())
 //	C.SDL_GL_SwapWindow(state.window)
 	// sleep
-	time.sleep_ms(1000 / 60)
+	time.sleep(1000 / 60 * time.millisecond)
 }
 
 fn event(ev &C.sapp_event, user_data voidptr) {
