@@ -2,6 +2,7 @@ import time
 import sokol
 import sokol.sapp
 import sokol.gfx
+import nsauzede.vig
 
 const (
 	gfx_ver = gfx.version
@@ -19,12 +20,22 @@ const (
 
 struct State {
 mut:
-	map    [][]rune = [
+	map0   [][]rune = [
 	[`#`, `#`, `#`, `#`, `#`, `#`],
 	[`#`, ` `, ` `, ` `, ` `, `#`],
 	[`#`, `@`, `$`, ` `, ` `, `#`],
 	[`#`, ` `, ` `, `.`, ` `, `#`],
 	[`#`, `#`, `#`, `#`, `#`, `#`],
+]
+	map    [][]rune = [
+	[`#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`],
+	[`#`, ` `, ` `, ` `, `#`, `#`, ` `, `@`, ` `, `#`],
+	[`#`, ` `, `#`, ` `, `.`, `.`, ` `, `#`, ` `, `#`],
+	[`#`, ` `, `$`, `$`, `.`, `.`, `$`, `#`, ` `, `#`],
+	[`#`, ` `, `#`, ` `, `.`, `.`, ` `, `$`, ` `, `#`],
+	[`#`, ` `, `#`, `$`, `#`, `#`, `$`, `#`, ` `, `#`],
+	[`#`, ` `, ` `, ` `, ` `, ` `, ` `, ` `, ` `, `#`],
+	[`#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`, `#`],
 ]
 	w      int
 	h      int
@@ -87,8 +98,8 @@ fn main() {
 	s.h = s.map.len
 	s.w = s.map[0].len
 	desc := C.sapp_desc{
-		width: 100
-		height: 100
+		width: 320
+		height: 200
 		frame_userdata_cb: frame
 		event_userdata_cb: event
 		user_data: &s
@@ -133,6 +144,19 @@ fn frame(user_data voidptr) {
 			println('YOU WIN!')
 		}
 	}
+	C.ImGui_ImplOpenGL3_NewFrame()
+	C.ImGui_ImplSDL2_NewFrame(state.window)
+	C.igNewFrame()
+	C.igBegin("Hello, Vorld!", C.NULL, 0)
+	C.igText("Hello")
+	C.igText("World")
+	C.igEnd()
+	C.igRender()
+	C.glViewport(0, 0, int(state.io.DisplaySize.x), int(state.io.DisplaySize.y))
+	C.glClearColor(state.clear_color.x, state.clear_color.y, state.clear_color.z, state.clear_color.w)
+	C.glClear(C.GL_COLOR_BUFFER_BIT)
+	C.ImGui_ImplOpenGL3_RenderDrawData(C.igGetDrawData())
+	C.SDL_GL_SwapWindow(state.window)
 	// sleep
 	time.sleep_ms(1000 / 60)
 }
