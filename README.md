@@ -10,5 +10,5 @@ Sokoban in V using Sokol/TUI, just 4fun
 $ v run sokolban.v
 ```
 
-[VWorkflowBadge]: https://github.com/nsauzede/sokolban/workflows/V/badge.svg
+[VWorkflowBadge]: https://github.com/nsauzede/sokolban/actions/workflows/v.yml/badge.svg
 [WorkflowUrl]: https://github.com/nsauzede/sokolban/commits/main
